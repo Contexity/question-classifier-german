@@ -1,0 +1,123 @@
+openapi: 3.0.0
+info:
+  title: Analysis API
+  version: "0.2"
+servers:
+- url: /
+paths:
+  /conllu-from-text:
+    description: The analysis results in CoNLL-U format
+    get:
+      description: Get dependency analysis for a text, in CoNLL-U format, by providing
+        text and language
+      operationId: text_to_conllu
+      parameters:
+      - description: The text that will be subjected to dependency analysis
+        explode: true
+        in: query
+        name: text
+        required: true
+        schema:
+          example: This is a test for English text.
+          type: string
+        style: form
+      - description: The language of the text
+        explode: true
+        in: query
+        name: lang
+        required: false
+        schema:
+          enum:
+          - en
+          - de
+          type: string
+          default: de
+        style: form
+      - description: Whether to return the CoNLL-U table with comments or not.
+        explode: true
+        in: query
+        name: comments
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: Analysis has been done with no problems and returned results
+        "400":
+          description: Bad request. The language must be one of those specified by
+            the API and the text must be in this language.
+      summary: Get dependency analysis for a text, in CoNLL-U format
+      x-openapi-router-controller: openapi_server.controllers.default_controller
+  /dependency-graph-from-conllu:
+    description: The analysis results as a dependency graph
+    post:
+      description: Get dependency analysis for a text by providing its already known
+        CoNLL-U format
+      operationId: conllu_to_graph
+      requestBody:
+        content:
+          text/plain; charset=utf-8:
+            schema:
+              type: string
+        description: The conllu table corresponding to a text
+        required: true
+      responses:
+        "200":
+          content:
+            image/svg+xml:
+              schema:
+                type: string
+          description: Analysis has been done with no problems and returned results
+        "400":
+          description: Bad request. The conllu table is either missing or has formating
+            errors. Please use the provided example as reference.
+      summary: Get dependency analysis given a CoNLL-U format
+      x-openapi-router-controller: openapi_server.controllers.default_controller
+  /dependency-graph-from-text:
+    description: The analysis results as a dependency graph
+    get:
+      description: Get dependency analysis for a text, as a dependency graph, by providing
+        text and language
+      operationId: text_to_graph
+      parameters:
+      - description: The text that will be subjected to dependency analysis
+        explode: true
+        in: query
+        name: text
+        required: true
+        schema:
+          example: This is a test for English text.
+          type: string
+        style: form
+      - description: The language of the text
+        explode: true
+        in: query
+        name: lang
+        required: false
+        schema:
+          enum:
+          - en
+          - de
+          type: string
+          default: de
+        style: form
+      responses:
+        "200":
+          content:
+            image/svg+xml:
+              schema:
+                type: string
+          description: Analysis has been done with no problems and returned results
+        "400":
+          description: Bad request. The language must be one of those specified by
+            the API and the text must be in this language.
+      summary: Get dependency analysis for a text
+      x-openapi-router-controller: openapi_server.controllers.default_controller
+components:
+  schemas: {}
