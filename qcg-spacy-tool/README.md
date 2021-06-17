@@ -3,8 +3,8 @@
 ## Install the NLP spaCy tool locally
 
 ```bash
-pip install git+ssh://git@git.contexity.com:10379/sccn/nlp-interface.git
-pip install -U conllu textacy pyyaml
+pip install nlp-interface/
+pip install -U conllu textacy==0.10.1 pyyaml
 python -m spacy download en_core_web_md
 python -m spacy download de_core_news_md
 ```

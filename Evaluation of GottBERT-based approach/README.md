@@ -24,7 +24,7 @@ pip install -U requests transformers[torch] setuptools wheel spacy
 ```
 Also the first time you run the code, the gottbert model will be automatically downloaded.
 
-Apart from the above, you will also need a tool we created in order to find if a sentence contains question words or question syntax. Please find more details about how to install and run this tool at **TO BE ADDED**
+Apart from the above, you will also need a tool we created in order to find if a sentence contains question words or question syntax. Please find more details about how to install and run this tool in the folder qcg-sentence-analyzer.
 
 ## Run the evaluation
 In the *Data* folder there is a csv file that contains all the utterances of Dortmund corpus after a preprocessing and cleanup step. You can directly use this data to run your experiments. 

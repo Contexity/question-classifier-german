@@ -1,0 +1,13 @@
+include openapi_server/openapi/openapi.yaml
+include openapi_server/test/data/en/conllu_Unix_line_endings.txt
+include openapi_server/test/data/en/conllu_Win_line_endings.txt
+include openapi_server/test/data/en/result_unix.xml
+include openapi_server/test/data/en/result_win.xml
+include openapi_server/test/data/en/text_Unix_line_endings.txt
+include openapi_server/test/data/en/text_Win_line_endings.txt
+include openapi_server/test/data/de/conllu_Unix_line_endings.txt
+include openapi_server/test/data/de/conllu_Win_line_endings.txt
+include openapi_server/test/data/de/result_unix.xml
+include openapi_server/test/data/de/result_win.xml
+include openapi_server/test/data/de/text_Unix_line_endings.txt
+include openapi_server/test/data/de/text_Win_line_endings.txt

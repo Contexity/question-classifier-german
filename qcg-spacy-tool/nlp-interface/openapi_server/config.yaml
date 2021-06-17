@@ -1,0 +1,22 @@
+version: 1
+formatters:
+  simple:
+    format: '%(asctime)s | %(name)s | %(levelname)s | %(message)s'
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: simple
+  file:
+    class: logging.FileHandler
+    filename: mylogs.log
+    mode: w
+    level: DEBUG
+    formatter: simple
+loggers:
+  root:
+    level: ERROR
+    handlers: [console]
+  openapi_server:
+    level: DEBUG
+    handlers: [console, file]
